@@ -28,11 +28,9 @@ fn main() {
     // is a thread-safe, multi-writer, single-reader FIFO.
     let (tx, rx) = channel();
     let chunk_size = n / NTHREADS;
-    let mut threads = Vec::with_capacity(NTHREADS as usize);
     for _ in 0..NTHREADS {
         let tx_thread = tx.clone();
-        let handle = spawn(move || tx_thread.send(monte_carlo_circle(chunk_size)));
-        threads.push(handle);
+        spawn(move || tx_thread.send(monte_carlo_circle(chunk_size)));
     }
 
     // Grab results from the channel and sum them back up.
@@ -41,11 +39,6 @@ fn main() {
         total_in_circle += rx.recv().unwrap();
     }
 
-    // Destroy threads
-    while let Some(thread) = threads.pop() {
-        thread.join().ok();
-    }
     let pi = 4. * total_in_circle as f32 / n as f32;
-
     println!("π is approximately {}", pi);
 }
