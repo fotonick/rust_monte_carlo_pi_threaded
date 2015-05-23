@@ -7,7 +7,7 @@ static NTHREADS: i32 = 4;
 
 // Description: Count how many of N uniform draws from a unit square fall
 //              within a unit circle
-// Input: number of trials to perform
+// Input: number of trials to perform, drawing two floats from [0, 1)
 // Output: number of trials that fell within the unit circle
 fn monte_carlo_circle(n: i32) -> i32 {
     let mut num_in_circle = 0;
