@@ -1,0 +1,11 @@
+[package]
+
+name = "monte_carlo_circle"
+version = "0.0.1"
+authors = [ "Nickolas Fotopoulos <nickolas.fotopoulos@gmail.com>" ]
+
+[[bin]]
+name = "monte_carlo_circle"
+
+[dependencies]
+rand = "0.3"
