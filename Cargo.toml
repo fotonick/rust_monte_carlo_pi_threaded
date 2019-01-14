@@ -6,6 +6,8 @@ authors = [ "Nickolas Fotopoulos <nickolas.fotopoulos@gmail.com>" ]
 
 [[bin]]
 name = "monte_carlo_circle"
+path = "src/monte_carlo_circle.rs"
 
 [dependencies]
 rand = "0.3"
+crossbeam-channel = "0.3"

@@ -1,6 +1,7 @@
 extern crate rand;
+extern crate crossbeam_channel;
 
-use std::sync::mpsc::channel;
+use crossbeam_channel::unbounded;
 use std::thread::spawn;
 
 static NTHREADS: i32 = 4;
@@ -26,7 +27,7 @@ fn main() {
 
     // Spawn threads to split up the work. Communicate via a channel, which
     // is a thread-safe, multi-writer, single-reader FIFO.
-    let (tx, rx) = channel();
+    let (tx, rx) = unbounded();
     let chunk_size = n / NTHREADS;
     for _ in 0..NTHREADS {
         let tx_thread = tx.clone();
