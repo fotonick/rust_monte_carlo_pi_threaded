@@ -2,6 +2,7 @@ extern crate rand;
 extern crate crossbeam_channel;
 
 use crossbeam_channel::unbounded;
+use rand::{Rng,thread_rng};
 use std::thread::spawn;
 
 static NTHREADS: i32 = 4;
@@ -12,9 +13,10 @@ static NTHREADS: i32 = 4;
 // Output: number of trials that fell within the unit circle
 fn monte_carlo_circle(n: i32) -> i32 {
     let mut num_in_circle = 0;
+    let mut rng = thread_rng();
     for _ in 1..n {
-        let x = rand::random::<f32>();
-        let y = rand::random::<f32>();
+        let x = rng.gen::<f32>();
+        let y = rng.gen::<f32>();
         if x * x + y * y < 1. {
             num_in_circle += 1;
         }

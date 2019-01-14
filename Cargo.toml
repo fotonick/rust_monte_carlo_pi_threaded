@@ -9,5 +9,5 @@ name = "monte_carlo_circle"
 path = "src/monte_carlo_circle.rs"
 
 [dependencies]
-rand = "0.3"
+rand = "0.6"
 crossbeam-channel = "0.3"
