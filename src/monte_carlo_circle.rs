@@ -1,6 +1,3 @@
-extern crate rand;
-extern crate crossbeam_channel;
-
 use crossbeam_channel::unbounded;
 use rand::{Rng,thread_rng};
 use std::thread::spawn;
